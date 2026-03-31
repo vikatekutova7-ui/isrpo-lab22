@@ -1,16 +1,27 @@
+import { Calculator } from "./calculator.js";
+
+document.addEventListener("DOMContentLoaded", () => {
+    const calc = new Calculator();
+    calc.init();
+});
+
 const display = document.getElementById("display");
 const buttons = document.querySelectorAll("button");
 const clearBtn = document.getElementById("clear");
+
 let expression = "";
-buttons.forEach((button) => {
+
+buttons.forEach(button => {
     button.addEventListener("click", () => {
         const value = button.textContent;
-        if (value === "C") {
+
+        if (value === "C"){
             expression = "";
             display.value = "";
             return;
         }
-        if (value === "=") {
+
+        if (value === "="){
             try {
                 expression = eval(expression);
                 display.value = expression;
@@ -18,7 +29,7 @@ buttons.forEach((button) => {
                 display.value = "Ошибка";
                 expression = "";
             }
-            return;
+            return
         }
         expression += value;
         display.value = expression;
